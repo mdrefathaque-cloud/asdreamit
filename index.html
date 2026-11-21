@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Future-ready websites for brands that want to grow. WordPress, Shopify, custom development, redesign, SEO and maintenance.">
+<title>AS Dream IT | Future-Ready Websites</title>
+<style>
+:root{--bg:#05070d;--bg2:#0a0f1c;--navy:#0d1830;--cyan:#22d3ee;--cyan2:#0ea5e9;--text:#e6edf7;--muted:#8b97ad;--card:rgba(13,24,48,.6);--border:rgba(34,211,238,.16)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1180px,92%);margin:auto}
+section{padding:96px 0;position:relative}
+.tag{display:inline-block;color:var(--cyan);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+h1,h2,h3{line-height:1.2;font-weight:700}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px}
+.lead{color:var(--muted);max-width:620px}
+.center{text-align:center}.center .lead{margin:auto}
+.grad{background:linear-gradient(120deg,#fff,var(--cyan) 60%,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:.3s;background:none;color:var(--text)}
+.btn-primary{background:linear-gradient(120deg,var(--cyan),var(--cyan2));color:#001018;box-shadow:0 0 24px rgba(34,211,238,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 40px rgba(34,211,238,.6)}
+.btn-ghost{border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px;backdrop-filter:blur(10px);transition:.35s}
+.card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 14px 40px rgba(34,211,238,.14)}
+.icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(34,211,238,.2),rgba(14,165,233,.05));color:var(--cyan);font-size:1.4rem;margin-bottom:18px;box-shadow:inset 0 0 0 1px var(--border)}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.show{opacity:1;transform:none}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;padding-top:env(safe-area-inset-top,0px)}
+header.scrolled{background:rgba(5,7,13,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem}
+.logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),#2563eb);display:grid;place-items:center;color:#001018;font-weight:900;box-shadow:0 0 20px rgba(34,211,238,.5)}
+.menu{display:flex;gap:30px;list-style:none}
+.menu a{font-size:.92rem;color:var(--muted);transition:.25s;position:relative}
+.menu a:hover,.menu a.active{color:var(--cyan)}
+.menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--cyan);transition:.3s}
+.menu a:hover::after{width:100%}
+.nav-cta{padding:10px 20px;font-size:.88rem}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;background:radial-gradient(circle,rgba(34,211,238,.25),transparent 65%);top:-120px;right:-160px;filter:blur(20px);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);margin-bottom:22px}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:560px;margin-bottom:34px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.stats{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
+.stats b{display:block;font-size:1.9rem;color:var(--cyan)}
+.stats span{font-size:.85rem;color:var(--muted)}
+.scene{position:relative;height:460px;perspective:1000px}
+.browser{position:absolute;width:88%;left:6%;top:40px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5);transform:rotateY(-12deg) rotateX(6deg);animation:float 6s ease-in-out infinite}
+.bar{display:flex;gap:6px;padding:12px;background:#0b1224}
+.bar i{width:10px;height:10px;border-radius:50%;background:#334155}
+.bar i:first-child{background:#f87171}.bar i:nth-child(2){background:#fbbf24}.bar i:nth-child(3){background:#34d399}
+.shot{padding:22px;display:grid;gap:12px}
+.shot .blk{height:70px;border-radius:10px;background:linear-gradient(120deg,rgba(34,211,238,.35),rgba(37,99,235,.2))}
+.shot .row{display:flex;gap:12px}
+.shot .row div{flex:1;height:90px;border-radius:10px;background:rgba(148,163,184,.08);border:1px solid var(--border)}
+.float-card{position:absolute;padding:14px 18px;border-radius:14px;background:rgba(13,24,48,.9);border:1px solid var(--border);box-shadow:0 20px 40px rgba(0,0,0,.4);font-size:.85rem;animation:float 5s ease-in-out infinite}
+.fc1{top:10px;left:0}.fc2{bottom:20px;right:0;animation-delay:1.5s}
+.orb{position:absolute;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#a5f3fc,#0284c7 60%,#0c1a33);box-shadow:0 0 50px rgba(34,211,238,.5);animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.portrait{position:relative;border-radius:24px;aspect-ratio:4/5;background:linear-gradient(160deg,var(--navy),#06101f);border:1px solid var(--border);display:grid;place-items:center;overflow:hidden}
+.portrait::after{content:"";position:absolute;inset:-2px;border-radius:24px;padding:2px;background:linear-gradient(135deg,var(--cyan),transparent 50%,#2563eb);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.portrait-initials{font-size:5rem;font-weight:900;color:rgba(34,211,238,.25)}
+.exp{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(5,7,13,.8);backdrop-filter:blur(8px);border-radius:14px;padding:16px;border:1px solid var(--border)}
+.exp b{color:var(--cyan);font-size:1.5rem}
+.achv{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+.achv div{padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--border)}
+.achv b{display:block;font-size:1.6rem;color:var(--cyan)}
+
+/* services */
+.bg-alt{background:linear-gradient(180deg,var(--bg),var(--bg2) 50%,var(--bg))}
+.service h3{font-size:1.2rem;margin-bottom:10px}
+.service p{color:var(--muted);font-size:.95rem}
+
+/* platforms */
+.plat{text-align:center;padding:34px 20px}
+.plat .logo-badge{font-size:2rem;font-weight:800;margin-bottom:12px;background:linear-gradient(120deg,var(--cyan),#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plat p{color:var(--muted);font-size:.92rem}
+
+/* expertise */
+.check{list-style:none}
+.check li{padding:14px 0;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:center;transition:.3s}
+.check li:hover{color:var(--cyan);padding-left:8px}
+.check li::before{content:"✦";color:var(--cyan)}
+.expert-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.meter{margin-top:30px}
+.meter div{margin-bottom:18px}
+.meter span{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px;color:var(--muted)}
+.bar-track{height:8px;background:rgba(148,163,184,.12);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--cyan),#2563eb);border-radius:99px;width:0;transition:width 1.4s ease;box-shadow:0 0 12px var(--cyan)}
+
+/* portfolio */
+.filters{display:flex;justify-content:center;gap:10px;margin:36px 0;flex-wrap:wrap}
+.filters button{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:9px 20px;border-radius:999px;cursor:pointer;font:inherit;font-size:.88rem;transition:.3s}
+.filters button.on,.filters button:hover{background:var(--cyan);color:#001018;border-color:var(--cyan)}
+.proj{overflow:hidden;padding:0}
+.proj-img{height:210px;position:relative;overflow:hidden}
+.proj-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}
+.proj:hover .proj-img img{transform:scale(1.08)}
+.proj-body{padding:24px}
+.proj-body small{color:var(--cyan);font-weight:600;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.proj-body h3{font-size:1.2rem;margin:8px 0 14px}
+.view{display:none;color:var(--cyan);font-weight:600;font-size:.9rem;margin-top:16px}
+.proj:hover .view{display:inline-block}
+.proj.hide{display:none}
+.p1 div{background:linear-gradient(135deg,#0ea5e9,#1e3a8a)}
+.p2 div{background:linear-gradient(135deg,#22d3ee,#0f172a)}
+.p3 div{background:linear-gradient(135deg,#6366f1,#0c4a6e)}
+.p4 div{background:linear-gradient(135deg,#06b6d4,#312e81)}
+.p5 div{background:linear-gradient(135deg,#0891b2,#1e293b)}
+.p6 div{background:linear-gradient(135deg,#38bdf8,#172554)}
+
+/* why */
+.why .card{text-align:center}
+.why .icon{margin:auto auto 18px}
+
+/* audit */
+.audit{background:linear-gradient(120deg,rgba(14,165,233,.18),rgba(13,24,48,.9));border:1px solid var(--border);border-radius:24px;padding:60px 40px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden}
+.audit::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(34,211,238,.2);filter:blur(60px);right:-80px;top:-80px}
+.audit ul{list-style:none;margin-top:18px;color:var(--muted)}
+.audit li::before{content:"✔ ";color:var(--cyan)}
+
+/* testimonials */
+.stars{color:#fbbf24;letter-spacing:3px;margin-bottom:14px}
+.quote{color:var(--muted);font-style:italic;margin-bottom:22px}
+.who{display:flex;align-items:center;gap:12px}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#2563eb);display:grid;place-items:center;color:#001018;font-weight:800}
+.who small{color:var(--muted)}
+
+/* faq */
+.faq{max-width:820px;margin:auto}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:14px;background:var(--card);overflow:hidden;transition:.3s}
+.faq-item.open{border-color:var(--cyan);box-shadow:0 0 24px rgba(34,211,238,.12)}
+.faq-q{width:100%;padding:20px 24px;background:none;border:0;color:var(--text);font:inherit;font-weight:600;font-size:1rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.faq-q i{color:var(--cyan);font-style:normal;font-size:1.4rem;transition:.3s}
+.faq-item.open .faq-q i{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-a p{padding:0 24px 22px;color:var(--muted)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px}
+.info{display:flex;gap:16px;margin-bottom:26px}
+.info .icon{margin:0;flex-shrink:0}
+.info small{color:var(--muted);display:block}
+.socials{display:flex;gap:12px;margin-top:10px}
+.socials a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--border);color:var(--muted);transition:.3s;font-weight:700;font-size:.85rem}
+.socials a:hover{background:var(--cyan);color:#001018;transform:translateY(-3px)}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:18px;display:flex;flex-direction:column}
+label{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+input,textarea{background:rgba(5,7,13,.6);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font:inherit;outline:none;transition:.3s}
+input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(34,211,238,.12)}
+textarea{min-height:130px;resize:vertical}
+.form-msg{margin-top:14px;color:var(--cyan);font-size:.92rem;min-height:1.4em}
+
+/* footer */
+footer{border-top:1px solid var(--border);padding:70px 0 26px;background:var(--bg2)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+footer h4{margin-bottom:18px;font-size:1rem}
+footer ul{list-style:none;color:var(--muted);font-size:.92rem}
+footer li{margin-bottom:10px;transition:.25s}
+footer li:hover{color:var(--cyan);padding-left:4px}
+footer p{color:var(--muted);font-size:.92rem;margin-top:14px;max-width:320px}
+.copy{text-align:center;color:var(--muted);font-size:.85rem;margin-top:50px;padding-top:24px;border-top:1px solid var(--border)}
+
+/* to top */
+#top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--cyan);color:#001018;border:0;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 0 20px rgba(34,211,238,.5);z-index:90}
+#top.show{opacity:1;pointer-events:auto}
+
+/* responsive */
+@media(max-width:960px){
+ .hero-grid,.about-grid,.expert-grid,.contact-grid{grid-template-columns:1fr}
+ .scene{height:380px}
+ .foot-grid{grid-template-columns:1fr 1fr}
+ .menu{position:fixed;inset:76px 0 auto 0;flex-direction:column;gap:0;background:rgba(5,7,13,.97);backdrop-filter:blur(14px);padding:10px 0;transform:translateY(-130%);transition:transform .4s;border-bottom:1px solid var(--border)}
+ .menu.open{transform:none}
+ .menu li a{display:block;padding:14px 5%}
+ .menu a::after{display:none}
+ .burger{display:block}
+ .nav-cta{display:none}
+}
+@media(max-width:640px){
+ section{padding:72px 0}
+ form .row{grid-template-columns:1fr}
+ .foot-grid{grid-template-columns:1fr}
+ .audit{padding:40px 24px}
+ .fc1,.fc2{display:none}
+ .browser{width:100%;left:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header id="header">
+ <div class="container nav">
+  <a href="#home" class="logo"><span class="logo-mark">AS</span>AS Dream IT</a>
+  <ul class="menu" id="menu">
+   <li><a href="#home">Home</a></li>
+   <li><a href="#about">About</a></li>
+   <li><a href="#services">Services</a></li>
+   <li><a href="#portfolio">Portfolio</a></li>
+   <li><a href="#blog">Blog</a></li>
+   <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:14px">
+   <a href="#contact" class="btn btn-primary nav-cta">Get Started</a>
+   <button class="burger" id="burger" aria-label="Open menu">☰</button>
+  </div>
+ </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="hero">
+ <div class="container hero-grid">
+  <div class="reveal">
+   <span class="tag">Web Design & Development</span>
+   <h1>Future-Ready Websites for <span class="grad">Brands That Want to Grow</span></h1>
+   <p>We design and build fast, secure, and beautiful websites on WordPress, Shopify, and custom platforms that turn visitors into customers and keep your brand ahead of the curve.</p>
+   <div class="btns">
+    <a href="#contact" class="btn btn-primary">Get a Free Audit →</a>
+    <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+   </div>
+   <div class="stats">
+    <div><b>150+</b><span>Websites launched</span></div>
+    <div><b>98%</b><span>Client satisfaction</span></div>
+    <div><b>5+</b><span>Years experience</span></div>
+   </div>
+  </div>
+  <div class="scene reveal" aria-hidden="true">
+   <div class="browser">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <div class="shot">
+     <div class="blk"></div>
+     <div class="row"><div></div><div></div><div></div></div>
+     <div class="row"><div style="height:60px"></div><div style="height:60px"></div></div>
+    </div>
+   </div>
+   <div class="orb" style="top:0;right:10%"></div>
+   <div class="float-card fc1">⚡ Load time <b style="color:var(--cyan)">0.9s</b></div>
+   <div class="float-card fc2">🔍 SEO score <b style="color:var(--cyan)">98/100</b></div>
+  </div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-alt">
+ <div class="container about-grid">
+  <div class="portrait reveal">
+   <img src="images/profile.png" alt="AS Dream IT team member at their workstation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
+   <div class="exp"><b>5+ years</b><br><span style="color:var(--muted);font-size:.9rem">Crafting websites for brands across industries</span></div>
+  </div>
+  <div class="reveal">
+   <span class="tag">About Us</span>
+   <h2>Designing Websites That Work as Hard as You Do</h2>
+   <p class="lead">AS Dream IT is a team of designers and developers focused on one goal: helping businesses look credible, load instantly, and convert visitors. We combine clean visual design with solid engineering so your site performs from day one.</p>
+   <p class="lead" style="margin-top:14px">From a single-page landing site to a full WooCommerce store, every project gets the same care: clear strategy, pixel-perfect design, and thorough testing before launch.</p>
+   <div class="achv">
+    <div><b>150+</b>Projects delivered</div>
+    <div><b>40+</b>Happy clients</div>
+    <div><b>12</b>Industry awards</div>
+    <div><b>24/7</b>Support available</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Services</span><h2>Everything Your Website Needs</h2><p class="lead">End-to-end services that take your site from idea to launch and beyond.</p></div>
+  <div class="grid g4" style="margin-top:56px">
+   <div class="card service reveal"><div class="icon">🎨</div><h3>WordPress Website Design</h3><p>Custom, conversion-focused WordPress designs tailored to your brand.</p></div>
+   <div class="card service reveal"><div class="icon">💻</div><h3>Website Development</h3><p>Clean, fast, and scalable code built to modern web standards.</p></div>
+   <div class="card service reveal"><div class="icon">✏️</div><h3>Graphic Design</h3><p>Logos, banners, and visual assets that complete your online identity.</p></div>
+   <div class="card service reveal"><div class="icon">🧩</div><h3>Custom Website Design</h3><p>Unique layouts and interactions designed around your business goals.</p></div>
+   <div class="card service reveal"><div class="icon">🔄</div><h3>Website Redesign</h3><p>Modernize an outdated site while keeping your SEO equity intact.</p></div>
+   <div class="card service reveal"><div class="icon">🛒</div><h3>WooCommerce Development</h3><p>Online stores with smooth checkout, payments, and inventory tools.</p></div>
+   <div class="card service reveal"><div class="icon">🛠️</div><h3>Website Maintenance</h3><p>Updates, backups, security monitoring, and performance care.</p></div>
+   <div class="card service reveal"><div class="icon">📈</div><h3>SEO Optimization</h3><p>Technical and on-page SEO to help customers find you on search.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="bg-alt">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Platforms</span><h2>Built on the Right Foundation</h2><p class="lead">We choose the platform that fits your goals, budget, and growth plans.</p></div>
+  <div class="grid g4" style="margin-top:56px">
+   <div class="card plat reveal"><div class="logo-badge">WordPress</div><p>Flexible, SEO-friendly, and easy to manage for content-driven sites.</p></div>
+   <div class="card plat reveal"><div class="logo-badge">Shopify</div><p>Reliable e-commerce with built-in payments, shipping, and apps.</p></div>
+   <div class="card plat reveal"><div class="logo-badge">CMS Platforms</div><p>Headless and traditional CMS options for editorial and enterprise sites.</p></div>
+   <div class="card plat reveal"><div class="logo-badge">Custom Development</div><p>Bespoke applications engineered for unique business requirements.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+ <div class="container expert-grid">
+  <div class="reveal">
+   <span class="tag">Expertise</span>
+   <h2>Our Core Strengths</h2>
+   <p class="lead">A disciplined process and deep technical skill, applied to every project we deliver.</p>
+   <div class="meter" id="meter">
+    <div><span>Custom Design & Redesign <b>95%</b></span><div class="bar-track"><div class="bar-fill" data-w="95"></div></div></div>
+    <div><span>UI/UX Design <b>92%</b></span><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+    <div><span>WordPress Development <b>96%</b></span><div class="bar-track"><div class="bar-fill" data-w="96"></div></div></div>
+    <div><span>Website Optimization <b>90%</b></span><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+   </div>
+  </div>
+  <div class="card reveal">
+   <ul class="check">
+    <li>Custom Website Design and Redesign</li>
+    <li>UI/UX Design</li>
+    <li>WordPress Development</li>
+    <li>Responsive Design</li>
+    <li>Website Optimization</li>
+    <li>Testing and Launch</li>
+    <li>Support and Maintenance</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="bg-alt">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Portfolio</span><h2>Recent Projects</h2><p class="lead">A selection of websites we've designed and launched for clients.</p></div>
+  <div class="filters" id="filters">
+   <button class="on" data-f="all">All</button>
+   <button data-f="wp">WordPress</button>
+   <button data-f="shop">E-commerce</button>
+   <button data-f="custom">Custom</button>
+  </div>
+  <div class="grid g3">
+   <article class="card proj p1 reveal" data-cat="wp"><div class="proj-img"><img src="images/construction.png" alt="Construction Industrial website homepage"></div><div class="proj-body"><small>WordPress · Construction</small><h3>Construction Industrial Website</h3><p class="lead" style="font-size:.92rem">Industrial construction site with bold hero messaging and clear quote requests.</p><a href="#contact" class="view">View Project →</a></div></article>
+   <article class="card proj p2 reveal" data-cat="shop"><div class="proj-img"><img src="images/hatbazar.png" alt="Hat Bazar grocery store homepage"></div><div class="proj-body"><small>E-commerce · Grocery</small><h3>Hat Bazar Grocery Store</h3><p class="lead" style="font-size:.92rem">Fresh grocery storefront with first-order discounts and quick online checkout.</p><a href="#contact" class="view">View Project →</a></div></article>
+   <article class="card proj p3 reveal" data-cat="wp"><div class="proj-img"><img src="images/plumbing.png" alt="Plumbing services website homepage"></div><div class="proj-body"><small>WordPress · Services</small><h3>Plumbing Services Website</h3><p class="lead" style="font-size:.92rem">Local service website with clear calls to action and easy inspection booking.</p><a href="#contact" class="view">View Project →</a></div></article>
+   <article class="card proj p4 reveal" data-cat="wp"><div class="proj-img"><img src="images/expo.png" alt="Expo art gallery theme homepage"></div><div class="proj-body"><small>WordPress · Art Gallery</small><h3>Expo Gallery Theme</h3><p class="lead" style="font-size:.92rem">Art and photography gallery theme with rich image-led collection pages.</p><a href="#contact" class="view">View Project →</a></div></article>
+   <article class="card proj p5 reveal" data-cat="custom"><div class="proj-img"><img src="images/nexora-laptop.png" alt="Nexora digital agency workspace"></div><div class="proj-body"><small>Custom · Agency</small><h3>Nexora Digital Agency</h3><p class="lead" style="font-size:.92rem">Modern digital agency site with bold typography and animated service visuals.</p><a href="#contact" class="view">View Project →</a></div></article>
+   <article class="card proj p6 reveal" data-cat="custom"><div class="proj-img"><img src="images/nexora-showcase.png" alt="Nexora website showcase"></div><div class="proj-body"><small>Custom · Showcase</small><h3>Nexora Website Showcase</h3><p class="lead" style="font-size:.92rem">Showcase layout highlighting agency work, analytics and a clear project call to action.</p><a href="#contact" class="view">View Project →</a></div></article><article class="card proj p7 reveal" data-cat="custom"><div class="proj-img"><img src="images/seora-laptop.png" alt="Seora digital marketing agency homepage"></div><div class="proj-body"><small>Custom · Digital Marketing</small><h3>Seora Digital Agency</h3><p class="lead" style="font-size:.92rem">Bold dark-theme agency site with a clear hero and service-led layout.</p><a href="#contact" class="view">View Project →</a></div></article><article class="card proj p8 reveal" data-cat="wp"><div class="proj-img"><img src="images/prim-life.png" alt="Prim Life printing company homepage"></div><div class="proj-body"><small>WordPress · Printing</small><h3>Prim Life Printing</h3><p class="lead" style="font-size:.92rem">Print company website with a bold hero and partner brand showcase.</p><a href="#contact" class="view">View Project →</a></div></article><article class="card proj p9 reveal" data-cat="custom"><div class="proj-img"><img src="images/prim-life-health.png" alt="Prim Life healthcare website homepage"></div><div class="proj-body"><small>Custom · Healthcare</small><h3>Prim Life Healthcare</h3><p class="lead" style="font-size:.92rem">Healthcare services site with clear care categories and a booking call to action.</p><a href="#contact" class="view">View Project →</a></div></article>
+  </div>
+ </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Why Choose Us</span><h2>Built to Perform, Designed to Impress</h2></div>
+  <div class="grid g3" style="margin-top:56px">
+   <div class="card reveal"><div class="icon">✨</div><h3>Quality Design</h3><p class="lead" style="margin:10px auto 0">Modern, on-brand layouts that make a lasting impression.</p></div>
+   <div class="card reveal"><div class="icon">⚡</div><h3>Fast Performance</h3><p class="lead" style="margin:10px auto 0">Optimized code and assets for quick load times everywhere.</p></div>
+   <div class="card reveal"><div class="icon">📱</div><h3>Responsive Websites</h3><p class="lead" style="margin:10px auto 0">Flawless on phones, tablets, and desktops alike.</p></div>
+   <div class="card reveal"><div class="icon">🔎</div><h3>SEO Friendly</h3><p class="lead" style="margin:10px auto 0">Structured for search engines from the first line of code.</p></div>
+   <div class="card reveal"><div class="icon">🤝</div><h3>Professional Support</h3><p class="lead" style="margin:10px auto 0">Responsive help whenever you need it, long after launch.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- AUDIT -->
+<section style="padding-top:0">
+ <div class="container reveal">
+  <div class="audit">
+   <div style="position:relative;z-index:1;max-width:600px">
+    <span class="tag">Free Offer</span>
+    <h2>Get a Free Website Audit</h2>
+    <p class="lead">We'll review your site's speed, design, SEO, and conversion path, then send you a clear list of priority fixes at no cost.</p>
+    <ul>
+     <li>Performance and speed check</li>
+     <li>SEO and technical review</li>
+     <li>Mobile usability assessment</li>
+    </ul>
+   </div>
+   <a href="#contact" class="btn btn-primary" style="position:relative;z-index:1">Request My Audit →</a>
+  </div>
+ </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="bg-alt">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Testimonials</span><h2>What Our Clients Say</h2></div>
+  <div class="grid g3" style="margin-top:56px">
+   <div class="card reveal"><div class="stars">★★★★★</div><p class="quote">"They rebuilt our store in six weeks, and sales increased noticeably within the first quarter. Communication was excellent throughout."</p><div class="who"><div class="avatar">SR</div><div><b>Sarah Reynolds</b><br><small>Founder, Lumen Fashion</small></div></div></div>
+   <div class="card reveal"><div class="stars">★★★★★</div><p class="quote">"Our old site was slow and hard to manage. AS Dream IT delivered a fast, clean WordPress site that our team can update with confidence."</p><div class="who"><div class="avatar">DM</div><div><b>David Mensah</b><br><small>Marketing Director, Atlas</small></div></div></div>
+   <div class="card reveal"><div class="stars">★★★★★</div><p class="quote">"Professional, detailed, and genuinely invested in our success. Their SEO work brought steady organic traffic within months."</p><div class="who"><div class="avatar">AK</div><div><b>Aisha Karim</b><br><small>Owner, Fresh Roots Market</small></div></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section>
+ <div class="container">
+  <div class="center reveal"><span class="tag">FAQ</span><h2>Frequently Asked Questions</h2></div>
+  <div class="faq" style="margin-top:50px">
+   <div class="faq-item reveal open"><button class="faq-q">How long does a typical website project take?<i>+</i></button><div class="faq-a"><p>Most business websites launch within 3 to 6 weeks, depending on content readiness and feature complexity.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Will my website be mobile-friendly?<i>+</i></button><div class="faq-a"><p>Yes. Every site we build is fully responsive and tested across phones, tablets, and desktop browsers.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Do you help with SEO after launch?<i>+</i></button><div class="faq-a"><p>We offer ongoing SEO optimization, including keyword strategy, technical fixes, and monthly performance reports.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Can you redesign my existing website?<i>+</i></button><div class="faq-a"><p>Absolutely. We preserve your search rankings and content structure while modernizing design and performance.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Do you offer maintenance plans?<i>+</i></button><div class="faq-a"><p>Yes. Our plans include updates, daily backups, security monitoring, and priority support.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="bg-alt">
+ <div class="container">
+  <div class="center reveal"><span class="tag">Blog</span><h2>Latest Insights</h2><p class="lead">Practical tips on web design, performance, and growth.</p></div>
+  <div class="grid g3" style="margin-top:56px">
+   <article class="card reveal"><small style="color:var(--cyan)">Performance · 5 min read</small><h3 style="margin:12px 0">Why Page Speed Decides Your Conversion Rate</h3><p class="lead" style="font-size:.92rem">How faster load times reduce bounce and lift sales across every device.</p></article>
+   <article class="card reveal"><small style="color:var(--cyan)">WordPress · 6 min read</small><h3 style="margin:12px 0">Choosing Between WordPress and Shopify</h3><p class="lead" style="font-size:.92rem">A practical guide to picking the right platform for your business goals.</p></article>
+   <article class="card reveal"><small style="color:var(--cyan)">SEO · 4 min read</small><h3 style="margin:12px 0">Technical SEO Basics for New Websites</h3><p class="lead" style="font-size:.92rem">The foundations every site needs before publishing its first page.</p></article>
+  </div>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+ <div class="container contact-grid">
+  <div class="reveal">
+   <span class="tag">Contact</span>
+   <h2>Let's Build Something Great</h2>
+   <p class="lead" style="margin-bottom:34px">Tell us about your project and we'll reply within one business day.</p>
+   <div class="info"><div class="icon">✉️</div><div><small>Email</small><b>refat@asdreamit.com</b></div></div>
+   <div class="info"><div class="icon">📞</div><div><small>Phone</small><b>01316020780</b></div></div>
+   <div class="info"><div class="icon">📍</div><div><small>Office</small><b>Fullabri Dinajpure Moodhopra 5260</b></div></div>
+   <div class="socials">
+    <a href="#" aria-label="LinkedIn">in</a>
+    <a href="#" aria-label="X">X</a>
+    <a href="#" aria-label="GitHub">GH</a>
+    <a href="#" aria-label="Dribbble">Db</a>
+   </div>
+  </div>
+  <div class="card reveal">
+   <form id="form">
+    <div class="row">
+     <div class="field"><label for="name">Name</label><input id="name" required placeholder="Your name"></div>
+     <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@company.com"></div>
+    </div>
+    <div class="field"><label for="subject">Subject</label><input id="subject" required placeholder="How can we help?"></div>
+    <div class="field"><label for="message">Message</label><textarea id="message" required placeholder="Tell us about your project..."></textarea></div>
+    <button class="btn btn-primary" type="submit">Send Message →</button>
+    <p class="form-msg" id="msg"></p>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="foot-grid">
+   <div>
+    <a href="#home" class="logo"><span class="logo-mark">AS</span>AS Dream IT</a>
+    <p>Future-ready websites for brands that want to grow.</p>
+   </div>
+   <div>
+    <h4>Quick Links</h4>
+    <ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li></ul>
+   </div>
+   <div>
+    <h4>Services</h4>
+    <ul><li>WordPress Design</li><li>Website Development</li><li>WooCommerce</li><li>Website Redesign</li><li>SEO Optimization</li></ul>
+   </div>
+   <div>
+    <h4>Contact</h4>
+    <ul><li>refat@asdreamit.com</li><li>01316020780</li><li>Fullabri Dinajpure Moodhopra 5260</li></ul>
+   </div>
+  </div>
+  <div class="copy">© 2026 AS Dream IT. All rights reserved.</div>
+ </div>
+</footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+// Sticky header + active link + back-to-top
+const header=document.getElementById('header'),top_=document.getElementById('top');
+const links=[...document.querySelectorAll('.menu a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+function onScroll(){
+ header.classList.toggle('scrolled',scrollY>40);
+ top_.classList.toggle('show',scrollY>600);
+ let idx=-1;sections.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)idx=i});
+ links.forEach((a,i)=>a.classList.toggle('active',i===idx));
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+top_.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+// Mobile menu
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+links.forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Skill bars
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');sio.disconnect()}}),{threshold:.3});
+sio.observe(document.getElementById('meter'));
+
+// Portfolio filter
+document.querySelectorAll('#filters button').forEach(btn=>btn.onclick=()=>{
+ document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('on'));
+ btn.classList.add('on');
+ const f=btn.dataset.f;
+ document.querySelectorAll('.proj').forEach(p=>p.classList.toggle('hide',f!=='all'&&p.dataset.cat!==f));
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item=>{
+ const q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+ q.onclick=()=>{
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=0});
+  if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+ };
+});
+document.querySelectorAll('.faq-item.open .faq-a').forEach(a=>a.style.maxHeight=a.scrollHeight+'px');
+
+// Contact form
+document.getElementById('form').onsubmit=e=>{
+ e.preventDefault();
+ document.getElementById('msg').textContent='Thanks! Your message has been received. We will reply within one business day.';
+ e.target.reset();
+};
+</script>
+</body>
+</html>
